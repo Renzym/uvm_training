@@ -1,7 +1,7 @@
-inteface dut_if();
+interface dut_if();
 endinterface: dut_if
 
-module dut(dut_if _if)
+module dut(dut_if _if);
 
 endmodule: dut
 

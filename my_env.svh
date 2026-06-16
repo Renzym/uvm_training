@@ -5,7 +5,7 @@ class my_env extends uvm_env;
         super.new(name, parent);
     endfunction: new
 
-    function void build_phase (uvm_ohase phase)
+    function void build_phase (uvm_phase phase);
 
     endfunction: build_phase
 
