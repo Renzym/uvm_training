@@ -1,11 +1,11 @@
 class my_transaction extends uvm_sequence_item;
     `uvm_object_utils(my_transaction)
-    //rand bit cmd;
-    //rand int addr;
-    rand logic [31:0] data;
+    rand my_pkg::cmd_e Cmd;
+    rand int Addr;
+    rand logic [31:0] WrData;
 
-    //constraint c_addr {addr >= 0; addr <= 256;}
-    constraint c_data {data >= 0; data <= 256;}
+    //constraint c_addr {Addr >= 0; Addr <= 256;}
+    constraint c_data {WrData >= 0; WrData <= 256;}
 
     function new(string name="");
         super.new(name);
