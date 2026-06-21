@@ -19,4 +19,11 @@ class my_test extends uvm_test;
         my_env_h = my_env::type_id::create("my_env_h", this);
     endfunction: build_phase
 
+    task run_phase(uvm_phase phase);
+        phase.raise_objection(this);
+        #100;
+        phase.drop_objection(this);
+
+    endtask: run_phase
+
 endclass: my_test
