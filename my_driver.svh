@@ -22,8 +22,10 @@ class my_driver extends uvm_driver #(my_transaction);
             dut_vi.Cmd = tx.Cmd;
             dut_vi.Addr = tx.Addr;
             dut_vi.WrData = tx.WrData;
-            @(posedge dut_vi.Clk)
+            @(posedge dut_vi.Clk) begin
+                tx.RdData = dut_vi.RdData;
                 seq_item_port.item_done();
+            end
         end
     endtask: run_phase
 

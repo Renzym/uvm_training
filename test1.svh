@@ -1,6 +1,3 @@
-`include "my_sequences.svh"
-import my_sequences::*;
-
 class test1 extends uvm_test;
     `uvm_component_utils(test1)
 
