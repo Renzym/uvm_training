@@ -25,8 +25,8 @@ if %errorlevel% neq 0 (
 echo ====================================================
 echo [STEP 3/3] Running simulation...
 echo ====================================================
-call xsim top_sim -R
-
+::call xsim top_sim -R
+xsim top_sim --R --testplusarg "{ UVM_TESTNAME=test1 }"
 if %errorlevel% neq 0 (
     echo [ERROR] Simulation failed!
     exit /b %errorlevel%

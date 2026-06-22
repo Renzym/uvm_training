@@ -40,7 +40,7 @@ module top;
         //run_test("my_test");
         //run_test("test1");
         //run_test("test2");
-        run_test("test3");
-        //run_test();
+        // run_test("test3");
+        run_test();
     end
 endmodule: top
