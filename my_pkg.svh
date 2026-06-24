@@ -10,6 +10,8 @@ typedef uvm_sequencer #(my_transaction) my_sequencer;
 `include "read_modify_write.svh"
 `include "seq_of_commands.svh"
 `include "my_driver.svh"
+`include "my_subscriber.svh"
+`include "my_monitor.svh"
 `include "my_agent.svh"
 `include "my_env.svh"
 `include "my_test.svh"
