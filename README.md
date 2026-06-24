@@ -1,4 +1,4 @@
-# UVM Hello World Example with Vivado Simulator
+# UVM Basics Course Examples with Vivado Simulator
 
 This repository contains a SystemVerilog UVM simulation projects based on Siemen's Verification Academy's UVM basic course, but set up to run using the AMD/Xilinx Vivado Simulator (`xsim`).
 
