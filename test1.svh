@@ -3,6 +3,7 @@ class test1 extends uvm_test;
 
     my_env my_env_h;
     my_dut_config dut_config_0;
+    int file_h;
 
     function new(string name, uvm_component parent);
         super.new(name, parent);
@@ -17,7 +18,19 @@ class test1 extends uvm_test;
         uvm_config_db #(my_dut_config)::set(this,"*", "dut_config", dut_config_0);
 
         my_env_h = my_env::type_id::create("my_env_h", this);
+
     endfunction: build_phase
+
+    function void start_of_simulation_phase(uvm_phase phase);
+        `uvm_info("yj","Starting simulation",UVM_LOW)
+
+        file_h = $fopen("test1.log", "w");
+        uvm_top.set_report_default_file_hier(file_h);
+
+        uvm_top.set_report_severity_action_hier(UVM_INFO, UVM_DISPLAY | UVM_LOG);
+
+    endfunction: start_of_simulation_phase
+
 
     task run_phase(uvm_phase phase);
         read_modify_write seq;

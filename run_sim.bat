@@ -26,7 +26,7 @@ echo ====================================================
 echo [STEP 3/3] Running simulation...
 echo ====================================================
 ::call xsim top_sim -R
-xsim top_sim --R --testplusarg "{ UVM_TESTNAME=test1 }"
+xsim top_sim --R --testplusarg "{ UVM_TESTNAME=test1 }" --testplusarg "{ UVM_VERBOSITY=UVM_MEDIUM }"
 if %errorlevel% neq 0 (
     echo [ERROR] Simulation failed!
     exit /b %errorlevel%

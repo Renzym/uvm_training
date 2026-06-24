@@ -18,6 +18,7 @@ class my_subscriber extends uvm_subscriber #(my_transaction);
     endfunction: build_phase
 
     function void write(my_transaction t);
+        `uvm_info("yj","Transaction received",UVM_LOW)
         cmd = t.Cmd;
         addr = t.Addr;
         data = t.WrData;
