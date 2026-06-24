@@ -1,13 +1,13 @@
 # UVM Hello World Example with Vivado Simulator
 
-This repository contains a simple SystemVerilog UVM "Hello World" simulation project set up to run using the AMD/Xilinx Vivado Simulator (`xsim`).
+This repository contains a SystemVerilog UVM simulation projects based on Siemen's Verification Academy's UVM basic course, but set up to run using the AMD/Xilinx Vivado Simulator (`xsim`).
 
 ## 📁 File Structure
 
 The project consists of the following files:
 
 *   **Source Files:**
-    *   [uvm_hello_world.sv](uvm_hello_world.sv) - The top-level module ([top](uvm_hello_world.sv#L8)) containing the interface definition ([dut_if](uvm_hello_world.sv#L1)), dummy [dut](uvm_hello_world.sv#L4) instantiations, and the `initial` block that triggers the UVM test.
+    *   [my_top.sv](my_top.sv) - The top-level module ([top](my_top.sv#L8)) containing the interface definition ([dut_if](my_top.sv#L1)), dummy [dut](my_top.sv#L4) instantiations, and the `initial` block that triggers the UVM test.
     *   [my_pkg.svh](my_pkg.svh) - Package container file that imports UVM package, includes UVM macros, and ties other source components together.
     *   [my_env.svh](my_env.svh) - UVM environment class ([my_env](my_env.svh#L1)) containing basic `build_phase` and `run_phase` methods.
     *   [my_test.svh](my_test.svh) - UVM test class ([my_test](my_test.svh#L1)) that creates the environment.
@@ -55,7 +55,7 @@ If you prefer to run commands manually, first open a Command Prompt, load the Vi
 2.  **Compile Source Files (`xvlog`):**
     Compile the SystemVerilog package and the top-level testbench file. The `-L uvm` flag is required to compile against the pre-compiled UVM library bundled with Vivado.
     ```cmd
-    xvlog -sv -L uvm my_pkg.svh uvm_hello_world.sv
+    xvlog -sv -L uvm my_pkg.svh my_top.sv
     ```
 
 3.  **Elaborate the Design (`xelab`):**
