@@ -1,7 +1,8 @@
 package test_pkg;
-    import my_pkg::*;    
     `include "uvm_macros.svh"
     import uvm_pkg::*;
+
+    import my_pkg::*;    
     import my_sequences_pkg::*;
 
     `include "my_test.svh"
