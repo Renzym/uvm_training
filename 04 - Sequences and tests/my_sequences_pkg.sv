@@ -1,4 +1,7 @@
-package my_sequences;
+package my_sequences_pkg;
+`include "uvm_macros.svh"
+import uvm_pkg::*;
+
 import my_pkg::*;
 
     class read_modify_write extends uvm_sequence #(my_transaction);
@@ -9,25 +12,25 @@ import my_pkg::*;
         endfunction: new
 
         task body;
-            forever begin
-                my_transaction tx;
-                tx = my_transaction::type_id::create("tx");
-                int a;
-                int d;
-                start_item(tx);
-                assert(tx.randomize());
-                tx.Cmd = READ;
-                finish_item(tx);
-                a = tx.Addr;
-                b = tx.RdData;
-                ++d;
-                tx = my_transaction::type_id::create("tx");
-                start_item(tx);
-                assert(tx.randomize());
-                tx.Cmd = WRITE; tx.Addr = a; tx.WrData = d;
-                // assert(tx.randomize() with { Cmd == WRITE; Addr == a; WrData == d; });
-                finish_item(tx);
-            end
+            my_transaction tx;
+            int a;
+            int d;
+
+            tx = my_transaction::type_id::create("tx");
+            start_item(tx);
+            assert(tx.randomize());
+            tx.Cmd = READ;
+            finish_item(tx);
+            a = tx.Addr;
+            d = tx.RdData;
+            ++d;
+
+            tx = my_transaction::type_id::create("tx");
+            start_item(tx);
+            assert(tx.randomize());
+            tx.Cmd = WRITE; tx.Addr = a; tx.WrData = d;
+            // assert(tx.randomize() with { Cmd == WRITE; Addr == a; WrData == d; });
+            finish_item(tx);
         endtask: body
     endclass: read_modify_write
 
@@ -49,4 +52,4 @@ import my_pkg::*;
             end
         endtask: body
     endclass: seq_of_commands
-endpackage: my_sequences
+endpackage: my_sequences_pkg

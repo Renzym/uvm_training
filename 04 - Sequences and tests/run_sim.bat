@@ -5,7 +5,7 @@ call C:\Xilinx\Vivado\2021.2\settings64.bat
 echo ====================================================
 echo [STEP 1/3] Compiling design and testbench...
 echo ====================================================
-call xvlog -sv -L uvm my_pkg.sv dut_ram.sv my_top.sv
+call xvlog -sv -L uvm my_pkg.sv my_sequences_pkg.sv test_pkg.sv dut_ram.sv my_top.sv
 
 if %errorlevel% neq 0 (
     echo [ERROR] Compilation failed!
