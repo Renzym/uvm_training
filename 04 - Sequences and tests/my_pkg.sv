@@ -1,7 +1,7 @@
 package my_pkg;
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-//`include "my_sequences.svh"
+
 typedef enum logic {READ=0, WRITE} cmd_e;
 `include "my_transaction.svh"
 typedef uvm_sequencer #(my_transaction) my_sequencer;
