@@ -19,8 +19,6 @@ class my_driver extends uvm_driver #(my_transaction);
             my_transaction tx;
             @(posedge dut_vi.clk);
             seq_item_port.get_next_item(tx);
-            //dut_vi.cmd = tx.cmd;
-            //dut_vi.addr = tx.addr;
             dut_vi.data = tx.data;
             @(posedge dut_vi.clk)
                 seq_item_port.item_done();
