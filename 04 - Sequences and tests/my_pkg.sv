@@ -6,7 +6,6 @@ typedef enum logic {READ=0, WRITE} cmd_e;
 `include "my_transaction.svh"
 typedef uvm_sequencer #(my_transaction) my_sequencer;
 `include "my_dut_config.svh"
-`include "my_sequence.svh"
 `include "my_driver.svh"
 `include "my_agent.svh"
 `include "my_env.svh"
