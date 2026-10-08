@@ -45,7 +45,7 @@ You can run the entire simulation workflow automatically or step-by-step from th
 
 ### Option B: Step-by-Step CLI Execution
 
-If you prefer to run commands manually, first open a Command Prompt, load the Vivado environment, and execute each stage:
+If you prefer to run commands manually, open a Command Prompt, navigate to this folder, load the Vivado environment, and execute each stage:
 
 1.  **Initialize Vivado Environment:**
     ```cmd
@@ -53,9 +53,9 @@ If you prefer to run commands manually, first open a Command Prompt, load the Vi
     ```
 
 2.  **Compile Source Files (`xvlog`):**
-    Compile the SystemVerilog package and the top-level testbench file. The `-L uvm` flag is required to compile against the pre-compiled UVM library bundled with Vivado.
+    Compile the SystemVerilog packages in dependency order, followed by the RAM design and top-level testbench. The `-L uvm` flag is required to compile against the pre-compiled UVM library bundled with Vivado.
     ```cmd
-    xvlog -sv -L uvm my_pkg.svh my_top.sv
+    xvlog -sv -L uvm my_pkg.sv my_sequences_pkg.sv test_pkg.sv dut_ram.sv my_top.sv
     ```
 
 3.  **Elaborate the Design (`xelab`):**
@@ -65,9 +65,9 @@ If you prefer to run commands manually, first open a Command Prompt, load the Vi
     ```
 
 4.  **Run Simulation (`xsim`):**
-    Execute the simulation. The `-R` switch runs the simulation immediately on startup (equivalent to running `run -all`).
+    Execute the simulation with `test1` selected and UVM verbosity set to `UVM_MEDIUM`. The `--R` switch runs the simulation immediately on startup (equivalent to running `run -all`), and `--testplusarg` passes the UVM settings to the testbench.
     ```cmd
-    xsim top_sim -R
+    xsim top_sim --R --testplusarg "{ UVM_TESTNAME=test1 }" --testplusarg "{ UVM_VERBOSITY=UVM_MEDIUM }"
     ```
 
 ---
